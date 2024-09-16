@@ -112,7 +112,7 @@ const MultiSelectComponent: <T>(
     const { width: W, height: H } = Dimensions.get('window');
     const styleContainerVertical: ViewStyle = useMemo(() => {
       return {
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: 'rgba(0,0,0,0.5)',
         alignItems: 'center',
       };
     }, []);
