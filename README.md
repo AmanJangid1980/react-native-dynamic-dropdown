@@ -899,5 +899,4 @@ yarn add react-native-dynamic-dropdown
 
 <br/>
 
-[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://github.com/hoaphantn7604)
 
