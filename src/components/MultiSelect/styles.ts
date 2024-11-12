@@ -20,8 +20,6 @@ export const styles = StyleSheet.create({
   },
   flex1: {
     flex: 1,
-    justifyContent:'center',
-    backgroundColor: 'rgba(0,0,0,0.7)'
   },
   flexShrink: {
     flexShrink: 1,

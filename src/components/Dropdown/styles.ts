@@ -20,8 +20,6 @@ export const styles = StyleSheet.create({
   },
   flex1: {
     flex: 1,
-    justifyContent:'center',
-    backgroundColor: 'rgba(0,0,0,0.7)'
   },
   flexShrink: {
     flexShrink: 1,
@@ -31,8 +29,9 @@ export const styles = StyleSheet.create({
   },
   dropdown: {
     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+    // backgroundColor:'red'
   },
   title: {
     marginVertical: 5,
@@ -46,9 +45,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textItem: {
-    flex: 1,
+    // flex: 1,
     fontSize: 16,
-    writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
+    // writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
   },
   icon: {
     width: 20,
