@@ -6,9 +6,9 @@ export const styles = StyleSheet.create({
   },
   container: {
     flexShrink: 1,
-    borderWidth: 0.5,
-    borderColor: '#EEEEEE',
-    backgroundColor: 'white',
+    // borderWidth: 0.5,
+    // borderColor: '#EEEEEE',
+    // backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -20,6 +20,8 @@ export const styles = StyleSheet.create({
   },
   flex1: {
     flex: 1,
+    justifyContent:'center',
+    backgroundColor: 'rgba(0,0,0,0.7)'
   },
   flexShrink: {
     flexShrink: 1,
@@ -29,9 +31,8 @@ export const styles = StyleSheet.create({
   },
   dropdown: {
     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    // backgroundColor:'red'
   },
   title: {
     marginVertical: 5,
@@ -45,9 +46,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textItem: {
-    // flex: 1,
+    flex: 1,
     fontSize: 16,
-    // writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
+    writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
   },
   icon: {
     width: 20,
@@ -65,4 +66,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  categoryText:{
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#B0B0B0'
+  }
 });

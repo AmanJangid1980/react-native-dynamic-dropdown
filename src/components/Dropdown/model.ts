@@ -42,7 +42,6 @@ export interface DropdownProps<T> {
   searchField?: keyof T;
   search?: boolean;
   searchPlaceholder?: string;
-  searchPlaceholderTextColor?: string;
   disable?: boolean;
   autoScroll?: boolean;
   showsVerticalScrollIndicator?: boolean;
