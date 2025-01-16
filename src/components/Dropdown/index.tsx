@@ -98,6 +98,7 @@ const DropdownComponent: <T>(
       closeModalWhenSelectedItem = true,
       excludeItems = [],
       excludeSearchItems = [],
+      allCategories = {},
     } = props;
 
     const ref = useRef<View>(null);
@@ -488,14 +489,14 @@ const DropdownComponent: <T>(
             style={{
               padding: 16,
               justifyContent: 'center',
-              alignItems: 'flex-start',     
+              alignItems: 'flex-start', 
             }}
           >
-            {index == 0 && <Text style={styles.categoryText}>Developing Yourself</Text>}
-            {index == 10 && <Text style={styles.categoryText}>Developing Relationships</Text>}
-            {index == 20 && <Text style={styles.categoryText}>Developing Business</Text>}
+            {index == 0 && <Text style={styles.categoryText}>{allCategories?.developing_yourself}</Text>}
+            {index == 10 && <Text style={styles.categoryText}>{allCategories?.developing_relationships}</Text>}
+            {index == 20 && <Text style={styles.categoryText}>{allCategories?.developing_business}</Text>}
           </View>
-          <View style={{width:'90%',height:2,backgroundColor:'#D4D4D4',alignSelf:'flex-end',marginHorizontal:'5%'}}/>
+          <View style={{width:'90%',height:2,backgroundColor:'#D4D4D4',alignSelf:'flex-end',marginHorizontal:'5%',marginBottom:10}}/>
           </>
            )}
           <TouchableHighlight

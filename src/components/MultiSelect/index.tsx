@@ -66,7 +66,6 @@ const MultiSelectComponent: <T>(
       iconColor = 'gray',
       inputSearchStyle,
       searchPlaceholder,
-      searchPlaceholderTextColor = 'gray',
       placeholder = 'Select item',
       search = false,
       maxHeight = 340,
@@ -113,7 +112,7 @@ const MultiSelectComponent: <T>(
     const { width: W, height: H } = Dimensions.get('window');
     const styleContainerVertical: ViewStyle = useMemo(() => {
       return {
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: 'rgba(0,0,0,0.7)',
         alignItems: 'center',
       };
     }, []);
@@ -150,10 +149,8 @@ const MultiSelectComponent: <T>(
     );
 
     useEffect(() => {
-      if (data && searchText.length === 0) {
-        const filterData = excludeData(data);
-        setListData([...filterData]);
-      }
+      const filterData = excludeData(data);
+      setListData([...filterData]);
 
       if (searchText) {
         onSearch(searchText);
@@ -163,7 +160,6 @@ const MultiSelectComponent: <T>(
 
     const eventOpen = () => {
       if (!disable) {
-        _measure();
         setVisible(true);
         if (onFocus) {
           onFocus();
@@ -273,11 +269,8 @@ const MultiSelectComponent: <T>(
 
         _measure();
         setVisible(visibleStatus);
-
-        if (data) {
-          const filterData = excludeData(data);
-          setListData(filterData);
-        }
+        const filterData = excludeData(data);
+        setListData(filterData);
 
         if (visibleStatus) {
           if (onFocus) {
@@ -543,8 +536,7 @@ const MultiSelectComponent: <T>(
                 }
                 onSearch(e);
               }}
-              showIcon
-              placeholderTextColor={searchPlaceholderTextColor}
+              placeholderTextColor="gray"
               iconStyle={[{ tintColor: iconColor }, iconStyle]}
             />
           );
@@ -562,7 +554,6 @@ const MultiSelectComponent: <T>(
       renderInputSearch,
       search,
       searchPlaceholder,
-      searchPlaceholderTextColor,
       testID,
     ]);
 
@@ -650,28 +641,17 @@ const MultiSelectComponent: <T>(
               visible={visible}
               supportedOrientations={['landscape', 'portrait']}
               onRequestClose={showOrClose}
+              animationType='fade'
             >
               <TouchableWithoutFeedback onPress={showOrClose}>
                 <View
                   style={StyleSheet.flatten([
                     styles.flex1,
                     isFull && styleContainerVertical,
-                    backgroundColor && { backgroundColor: backgroundColor },
+                    // backgroundColor && { backgroundColor: backgroundColor },
                     keyboardStyle,
                   ])}
                 >
-                  <View
-                    style={StyleSheet.flatten([
-                      styles.flex1,
-                      !isTopPosition
-                        ? { paddingTop: extendHeight }
-                        : {
-                            justifyContent: 'flex-end',
-                            paddingBottom: extendHeight,
-                          },
-                      isFull && styles.fullScreen,
-                    ])}
-                  >
                     <View
                       style={StyleSheet.flatten([
                         styles.container,
@@ -684,7 +664,6 @@ const MultiSelectComponent: <T>(
                     >
                       {_renderList(isTopPosition)}
                     </View>
-                  </View>
                 </View>
               </TouchableWithoutFeedback>
             </Modal>
@@ -709,6 +688,108 @@ const MultiSelectComponent: <T>(
       styleHorizontal,
       _renderList,
     ]);
+    // const _renderModal = useCallback(() => {
+    //   if (visible && position) {
+    //     const { isFull, width, height, top, bottom, left } = position;
+
+    //     const onAutoPosition = () => {
+    //       if (keyboardHeight > 0) {
+    //         return bottom < keyboardHeight + height;
+    //       }
+
+    //       return bottom < (search ? 150 : 100);
+    //     };
+
+    //     if (width && top && bottom) {
+    //       const styleVertical: ViewStyle = {
+    //         left: left,
+    //         maxHeight: maxHeight,
+    //         minHeight: minHeight,
+    //       };
+    //       const isTopPosition =
+    //         dropdownPosition === 'auto'
+    //           ? onAutoPosition()
+    //           : dropdownPosition === 'top';
+
+    //       let keyboardStyle: ViewStyle = {};
+
+    //       let extendHeight = !isTopPosition ? top : bottom;
+    //       if (
+    //         keyboardAvoiding &&
+    //         keyboardHeight > 0 &&
+    //         isTopPosition &&
+    //         dropdownPosition === 'auto'
+    //       ) {
+    //         extendHeight = keyboardHeight;
+    //       }
+
+    //       return (
+    //         <Modal
+    //           transparent
+    //           statusBarTranslucent
+    //           visible={visible}
+    //           supportedOrientations={['landscape', 'portrait']}
+    //           onRequestClose={showOrClose}
+    //           animationType='fade'
+    //         >
+    //           <TouchableWithoutFeedback onPress={showOrClose}>
+    //             <View
+    //               style={StyleSheet.flatten([
+    //                 styles.flex1,
+    //                 isFull && styleContainerVertical,
+    //                 backgroundColor && { backgroundColor: backgroundColor },
+    //                 keyboardStyle,
+    //               ])}
+    //             >
+    //               <View
+    //                 style={StyleSheet.flatten([
+    //                   styles.flex1,
+    //                   !isTopPosition
+    //                     ? { paddingTop: extendHeight }
+    //                     : {
+    //                         justifyContent: 'flex-end',
+    //                         paddingBottom: extendHeight,
+    //                       },
+    //                   isFull && styles.fullScreen,
+    //                 ])}
+    //               >
+    //                 <View
+    //                   style={StyleSheet.flatten([
+    //                     styles.container,
+    //                     isFull ? styleHorizontal : styleVertical,
+    //                     {
+    //                       width,
+    //                     },
+    //                     containerStyle,
+    //                   ])}
+    //                 >
+    //                   {_renderList(isTopPosition)}
+    //                 </View>
+    //               </View>
+    //             </View>
+    //           </TouchableWithoutFeedback>
+    //         </Modal>
+    //       );
+    //     }
+    //     return null;
+    //   }
+    //   return null;
+    // }, [
+    //   visible,
+    //   search,
+    //   position,
+    //   keyboardHeight,
+    //   maxHeight,
+    //   minHeight,
+    //   dropdownPosition,
+    //   keyboardAvoiding,
+    //   showOrClose,
+    //   styleContainerVertical,
+    //   backgroundColor,
+    //   containerStyle,
+    //   styleHorizontal,
+    //   _renderList,
+    // ]);
 
     const unSelect = (item: any) => {
       if (!disable) {
