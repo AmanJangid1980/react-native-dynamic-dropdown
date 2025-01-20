@@ -77,6 +77,9 @@ const DropdownComponent: <T>(
       disable = false,
       keyboardAvoiding = true,
       inverted = true,
+      renderDeveloping_yourself,
+      developing_relationshipsTitle,
+      developing_businessTitle,
       renderLeftIcon,
       renderRightIcon,
       renderItem,
@@ -487,16 +490,18 @@ const DropdownComponent: <T>(
             <>
           <View
             style={{
-              padding: 16,
+              paddingTop:14,
+              paddingBottom: 12,
+              paddingHorizontal: 16,
               justifyContent: 'center',
               alignItems: 'flex-start', 
             }}
           >
-            {index == 0 && <Text style={styles.categoryText}>{allCategories?.developing_yourself}</Text>}
-            {index == 10 && <Text style={styles.categoryText}>{allCategories?.developing_relationships}</Text>}
-            {index == 20 && <Text style={styles.categoryText}>{allCategories?.developing_business}</Text>}
+            {index == 0 && (renderDeveloping_yourself)}
+            {index == 10 && (developing_relationshipsTitle)}
+            {index == 20 && (developing_businessTitle)}
           </View>
-          <View style={{width:'90%',height:2,backgroundColor:'#D4D4D4',alignSelf:'flex-end',marginHorizontal:'5%',marginBottom:10}}/>
+          <View style={{width:'90%',height:2,backgroundColor:'#f2f2f2',marginHorizontal:'5%',marginBottom:10}}/>
           </>
            )}
           <TouchableHighlight

@@ -69,6 +69,6 @@ export const styles = StyleSheet.create({
   categoryText:{
     fontSize: 16,
     fontWeight: '600',
-    color: '#B0B0B0'
+    color: '#b0b0b0'
   }
 });

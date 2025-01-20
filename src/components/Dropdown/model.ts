@@ -62,6 +62,9 @@ export interface DropdownProps<T> {
   renderLeftIcon?: (visible?: boolean) => JSX.Element | null | undefined;
   renderRightIcon?: (visible?: boolean) => JSX.Element | null | undefined;
   renderItem?: (item: T, selected?: boolean) => JSX.Element | null | undefined;
+  renderDeveloping_yourself?: JSX.Element | null | undefined;
+  developing_relationshipsTitle?: JSX.Element | null | undefined;
+  developing_businessTitle?: JSX.Element | null | undefined;
   renderInputSearch?: (
     onSearch: (text: string) => void
   ) => JSX.Element | null | undefined;
