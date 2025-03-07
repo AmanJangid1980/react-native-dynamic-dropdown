@@ -77,6 +77,9 @@ const DropdownComponent: <T>(
       disable = false,
       keyboardAvoiding = true,
       inverted = true,
+      renderDeveloping_yourself,
+      developing_relationshipsTitle,
+      developing_businessTitle,
       renderLeftIcon,
       renderRightIcon,
       renderItem,
@@ -98,6 +101,7 @@ const DropdownComponent: <T>(
       closeModalWhenSelectedItem = true,
       excludeItems = [],
       excludeSearchItems = [],
+      allCategories = {},
     } = props;
 
     const ref = useRef<View>(null);
@@ -479,7 +483,27 @@ const DropdownComponent: <T>(
         const isSelected = currentValue && _get(currentValue, valueField);
         const selected = _isEqual(_get(item, valueField), isSelected);
         _assign(item, { _index: index });
+        // console.log("{ item, index }---------->",{ item, index })
         return (
+          <>
+          {[0, 10, 20].includes(index) && item.category&&(
+            <>
+          <View
+            style={{
+              paddingTop:14,
+              paddingBottom: 12,
+              paddingHorizontal: 16,
+              justifyContent: 'center',
+              alignItems: 'flex-start', 
+            }}
+          >
+            {index == 0 && (renderDeveloping_yourself)}
+            {index == 10 && (developing_relationshipsTitle)}
+            {index == 20 && (developing_businessTitle)}
+          </View>
+          <View style={{width:'90%',height:2,backgroundColor:'#f2f2f2',marginHorizontal:'5%',marginBottom:10}}/>
+          </>
+           )}
           <TouchableHighlight
             key={index.toString()}
             testID={_get(item, itemTestIDField || labelField)}
@@ -490,6 +514,11 @@ const DropdownComponent: <T>(
             )}
             underlayColor={activeColor}
             onPress={() => onSelect(item)}
+            style={{
+              overflow: "hidden",
+              ...(index === 0 && { borderTopStartRadius: 10, borderTopEndRadius: 10 }),
+              ...(index === 1 && { borderBottomStartRadius: 10, borderBottomEndRadius: 10 }),
+            }}
           >
             <View
               style={StyleSheet.flatten([
@@ -516,6 +545,7 @@ const DropdownComponent: <T>(
               )}
             </View>
           </TouchableHighlight>
+          </>
         );
       },
       [
@@ -590,6 +620,7 @@ const DropdownComponent: <T>(
         const _renderListHelper = () => {
           return (
             <Animated.FlatList
+              style={{borderRadius:12,borderColor:'#c0c9fc',borderWidth:2,overflow:'hidden',backgroundColor:'white'}}
               testID={testID + ' flatlist'}
               accessibilityLabel={accessibilityLabel + ' flatlist'}
               {...flatListProps}
@@ -642,7 +673,7 @@ const DropdownComponent: <T>(
 
         if (width && top && bottom) {
           const styleVertical: ViewStyle = {
-            left: left,
+            // left: left,
             maxHeight: maxHeight,
             minHeight: minHeight,
           };
@@ -677,7 +708,8 @@ const DropdownComponent: <T>(
                   style={StyleSheet.flatten([
                     styles.flex1,
                     isFull && styleContainerVertical,
-                    backgroundColor && { backgroundColor: backgroundColor },
+                    backgroundColor && { backgroundColor: backgroundColor },{
+                      paddingHorizontal: 40,},
                     keyboardStyle,
                   ])}
                 >
@@ -686,7 +718,7 @@ const DropdownComponent: <T>(
                         styles.container,
                         isFull ? styleHorizontal : styleVertical,
                         {
-                          width,
+                          // width,
                         },
                         containerStyle,
                       ])}

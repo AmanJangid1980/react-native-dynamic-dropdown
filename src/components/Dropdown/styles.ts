@@ -6,9 +6,9 @@ export const styles = StyleSheet.create({
   },
   container: {
     flexShrink: 1,
-    borderWidth: 0.5,
-    borderColor: '#EEEEEE',
-    backgroundColor: 'white',
+    // borderWidth: 0.5,
+    // borderColor: '#EEEEEE',
+    // backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -66,4 +66,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  categoryText:{
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#b0b0b0'
+  }
 });
